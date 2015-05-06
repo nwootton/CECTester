@@ -1,0 +1,83 @@
+/*
+*	Default Variables - Sky Go Colours - XBox
+*/
+
+/* Colour Palette */
+//Background gradient colours
+$bkg-top: 				#0e377b;
+$bkg-bottom: 			#020914;
+
+
+//Flat colours
+$flat_yellow:			#fcdb05;
+$flat_blue_light:		#174da2;
+$flat_blue_med:			#103164;
+$flat_blue_dark:		#0c264e;
+
+$default-font-colour:	#ffffff;
+
+
+//Gradient Colours
+$yellow_top:			#fee903;
+$yellow_bottom:			#f2a40b;
+
+$blue_top:				#1952ab;
+$blue_bottom:			#103e86;
+
+
+//Fallback gradient colour
+$default-colour: 	$flat_blue_dark;
+
+//Main Gradient
+@mixin bGround {
+	@include background-image(radial-gradient(color-stops($bkg-top, $bkg-bottom), top));
+}
+
+//Highlight gradient
+@mixin hightlight-icon($icon_url, $posn) {
+	
+	$gradient:	linear-gradient($yellow_top, $yellow_bottom);
+	$icon:		url($icon_url) no-repeat $posn;
+	
+	@include background($icon,$gradient);
+}
+
+@mixin hightlight() {
+	
+	@include background-image(linear-gradient($yellow_top, $yellow_bottom));
+}
+
+//Non-highlight gradient
+@mixin non-hightlight-icon($icon_url, $posn) {
+	
+	$gradient:	linear-gradient($blue_top, $blue_bottom);
+	$icon:		url($icon_url) no-repeat $posn;
+	
+	@include background($icon,$gradient);
+}
+
+@mixin non-hightlight() {
+	
+	@include background-image(linear-gradient($blue_top, $blue_bottom));
+}
+
+@font-face {
+  	font-family: "SkyReg";
+  	src: url("/assets/fonts/Sky/Sky_Reg.ttf") format('truetype');
+  	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+  	font-family: "SkyMed";
+  	src: url("/assets/fonts/Sky/Sky_Med.ttf") format('truetype');
+  	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+  	font-family: "SkyBold";
+  	src: url("/assets/fonts/Sky/Sky_Bold.ttf") format('truetype');
+  	font-weight: normal;
+	font-style: normal;
+}

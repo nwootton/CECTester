@@ -1,0 +1,85 @@
+/*
+*	Default Variables - Sky Go Colours - XBox
+*/
+/* Colour Palette */
+@font-face {
+  font-family: "SkyReg";
+  src: url("/assets/fonts/Sky/Sky_Reg.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SkyMed";
+  src: url("/assets/fonts/Sky/Sky_Med.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SkyBold";
+  src: url("/assets/fonts/Sky/Sky_Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Style.css */
+/* line 14, ../../../SASS/style.scss */
+html {
+  min-height: 100%;
+  font-family: SkyMed;
+  color: white;
+}
+
+/* line 20, ../../../SASS/style.scss */
+body {
+  font-family: SkyMed;
+  color: white;
+  margin: 0px;
+  background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 100, color-stop(0%, #0e377b), color-stop(100%, #020914));
+  background-image: -webkit-radial-gradient(top, #0e377b, #020914);
+  background-image: -moz-radial-gradient(top, #0e377b, #020914);
+  background-image: -o-radial-gradient(top, #0e377b, #020914);
+  background-image: -ms-radial-gradient(top, #0e377b, #020914);
+  background-image: radial-gradient(top, #0e377b, #020914);
+}
+
+/* line 27, ../../../SASS/style.scss */
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto\9;
+  /* ie8 */
+}
+
+/* line 33, ../../../SASS/style.scss */
+.inactive {
+  display: none;
+}
+
+/* line 39, ../../../SASS/style.scss */
+.pageHeader {
+  height: 4.5rem;
+  width: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #174193), color-stop(49%, #2f549e), color-stop(50%, #174193), color-stop(100%, #143981));
+  background-image: -webkit-linear-gradient(#174193, #2f549e 49%, #174193 50%, #143981);
+  background-image: -moz-linear-gradient(#174193, #2f549e 49%, #174193 50%, #143981);
+  background-image: -o-linear-gradient(#174193, #2f549e 49%, #174193 50%, #143981);
+  background-image: -ms-linear-gradient(#174193, #2f549e 49%, #174193 50%, #143981);
+  background-image: linear-gradient(#174193, #2f549e 49%, #174193 50%, #143981);
+}
+/* line 44, ../../../SASS/style.scss */
+.pageHeader img.headerLogo {
+  display: block;
+  margin: auto auto;
+  width: 6rem;
+  padding-top: 0.5rem;
+  cursor: pointer;
+}
+
+/* line 54, ../../../SASS/style.scss */
+table {
+  align: center;
+  margin-left: auto;
+  margin-right: auto;
+}

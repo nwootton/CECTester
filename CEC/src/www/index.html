@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CEC Control Testing</title>
+    
+    <!-- Load Generated CSS Files -->
+    <link rel="stylesheet" type="text/css" href="./css/reset.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen" />
+
+    <!--  Load main JS file libraries -->   
+    <script type="text/javascript" src="./js/libs/jquery-2.0.3.min.js"></script> 
+    <script type="text/javascript" src="./js/libs/underscore-min.js"></script> 
+    
+    <script type="text/javascript">
+        $(document).ready(function(){
+        
+            console.log('Ready');
+                
+        });
+        
+        function sendUp() {
+            var device      = '';
+            var command     = 'tx';
+            var instruction = '04:44:01';
+            
+            sendCommand(device, command, instruction);
+        }
+
+        function sendLeft() {
+            var device      = '';
+            var command     = 'tx';
+            var instruction = '04:44:03';
+
+            sendCommand(device, command, instruction);
+        }
+        
+        function sendSelect() {
+            var device      = 4;
+            var command     = 'tx';
+            var instruction = '04:44:00';
+
+            sendCommand(device, command, instruction);
+        }
+        
+        function sendRight() {
+            var device      = '';
+            var command     = 'tx';
+            var instruction = '04:44:04';
+
+            sendCommand(device, command, instruction);
+        }
+        
+        function sendDown() {
+            var device      = '';
+            var command     = 'tx';
+            var instruction = '04:44:02';
+
+            sendCommand(device, command, instruction);
+        }
+
+        function sendOn() {
+            var device      = 4;
+            var command     = 'on';
+            var instruction = '';
+
+            sendCommand(device, command, instruction);
+        }
+        
+        function sendOff() {
+            var device      = 4;
+            var command     = 'standby';
+            var instruction = '';
+
+            sendCommand(device, command, instruction);
+        }        
+        
+        function sendPlay() {
+            var device      = '';
+            var command     = 'tx';
+            var instruction = '04:41:24';
+
+            sendCommand(device, command, instruction);
+        }
+        
+        function sendPause() {
+            var device      = '';
+            var command     = 'tx';
+            var instruction = '04:41:25';
+
+            sendCommand(device, command, instruction);
+        }
+        
+        function sendStop() {
+            var device      = '';
+            var command     = 'tx';
+            var instruction = '04:42:03';
+
+            sendCommand(device, command, instruction);
+        }
+        
+        
+        function sendCommand(device, command, instruction) {
+            
+            console.log('Sending: ' + command + ' ' + device + ' ' + instruction);
+            
+            $.ajax({
+                url:    "sendCommand.php",
+                data: {device:device, command:command, instruction:instruction},
+                
+                error: function(ev){
+                    console.error(ev);              
+                },
+                
+                success: function(ev) {
+                    console.log(ev);
+                }
+            });
+            
+        }
+        
+    </script>
+    
+</head>
+<body>
+    <p>
+        <table>
+            <tr>
+                <td>&nbsp;</td>
+                <td><button class="button" id="upBtn" onclick="sendUp();">Up</button></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td><button class="button" id="leftBtn" onclick="sendLeft();">Left</button></td>
+                <td><button class="button" id="selectBtn" onclick="sendSelect();">OK</button></td>
+                <td><button class="button" id="rightBtn" onclick="sendRight();">Right</button></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><button class="button" id="downBtn" onclick="sendDown();">Down</button></td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    </p>
+    <p>
+        <table>
+            <tr>
+                <td><button class="button" id="onBtn" onclick="sendOn();">On</button></td>
+                <td><button class="button" id="offBtn" onclick="sendOff();">Off</button></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td><button class="button" id="playBtn" onclick="sendPlay();">Play</button></td>
+                <td><button class="button" id="pauseBtn" onclick="sendPause();">Pause</button></td>
+                <td><button class="button" id="stopBtn" onclick="sendStop();">Stop</button></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><button class="button" id="downBtn" onclick="sendDown();">Down</button></td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    </p>
+    
+
+</body>
+</html>

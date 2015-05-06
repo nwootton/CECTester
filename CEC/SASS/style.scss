@@ -1,0 +1,58 @@
+//Load SASS System
+@import "compass";
+
+//Load variable file
+@import "_SkyGo_XBox.scss";
+
+//Load mixin library
+@import "_base.scss";
+
+/* Style.css */
+//Default stylesheet for all devices 
+
+// Basic Page Rules
+html {
+	min-height:		 	100%;
+	font-family:	 	SkyMed;
+	color:				$default-font-colour;
+}
+
+body {
+	font-family: 	SkyMed;
+	color:			$default-font-colour;
+   	margin: 		0px;
+   	@include 		bGround;
+ }
+
+img {
+	max-width: 		100%;
+	height: 		auto;
+	width: 			auto\9; /* ie8 */
+}
+
+.inactive {
+	display:		none;
+}
+
+
+// Page Header and logo
+.pageHeader {
+	height:			4.5rem;
+	width:			100%;
+	@include		menuJLRGradient;
+	
+	img.headerLogo {
+		display:		block;
+		margin:			auto auto;
+		width:			6rem;			//96px
+		padding-top: 	0.5rem;
+		cursor: 		pointer;
+	}
+}
+
+
+table {
+    align:        center;
+    margin-left:  auto;
+    margin-right: auto;
+}

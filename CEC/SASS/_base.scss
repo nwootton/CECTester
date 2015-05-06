@@ -1,0 +1,212 @@
+//Basic mixins library
+
+
+// Mixins - Generic - used in other mixins!!
+@mixin text-shadow($h, $v, $radius, $r, $g, $b) {
+
+	text-shadow:	$h $v $radius rgba($r,$g,$b,0.70);
+	text-shadow:	$h $v $radius rgb($r,$g,$b);
+
+ 	filter: dropshadow(color=rgb($r,$g,$b), offx=$h, offy=$v);
+}
+
+@mixin rounded-corners($radius) {
+	-webkit-border-radius: 	$radius;
+	-moz-border-radius: 		$radius;                                                                                                                 
+	border-radius: 			$radius;
+}
+
+@mixin rounded-corners-tl($radius) {
+	-moz-border-radius-topleft: 		$radius;
+    -webkit-border-top-left-radius: 	$radius;
+    border-top-left-radius:				$radius;
+}
+
+@mixin rounded-corners-tr($radius) {
+    -moz-border-radius-topright: 		$radius;
+	-webkit-border-top-right-radius: 	$radius;
+	border-top-right-radius:			$radius;
+}
+
+@mixin rounded-corners-bl($radius) {
+	-moz-border-radius-bottomleft: 		$radius;
+    -webkit-border-bottom-left-radius: 	$radius;
+    border-bottom-left-radius:			$radius;
+}
+
+@mixin rounded-corners-br($radius) {
+	-moz-border-radius-bottomright: 	$radius;
+    -webkit-border-bottom-right-radius: $radius;
+    border-bottom-right-radius:			$radius;
+}
+
+
+@mixin button-box-shadow($h, $v, $radius, $spread, $color) {
+  -webkit-box-shadow: $h $v $radius $spread $color;
+  -moz-box-shadow: $h $v $radius $spread $color;
+  box-shadow: $h $v $radius $spread $color;
+}
+
+@mixin linkDefaults {
+	text-decoration:	none;
+}
+
+@mixin transparent($color, $alpha) {
+  $rgba: rgba($color, $alpha);
+  $ie-hex-str: ie-hex-str($rgba);
+  background-color: transparent;
+  background-color: $rgba;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+  zoom: 1;
+}
+
+// Gradients
+@mixin navGradient {
+	// This yields a linear gradient spanning from top to bottom
+	@include background-image(linear-gradient(#8AB8E4, #5789BB 50%, #103357));
+}
+
+@mixin activeNavItem {
+	@include background-image(linear-gradient(#bfd9f3, #43709c 50%, #13365a));
+}
+
+@mixin menuTopGradient {
+	// This yields a linear gradient spanning from top to bottom
+	@include background-image(linear-gradient(#7fabd6, #244974 49%, #123c66 50%, #2f5c87));
+}
+
+@mixin filterTextGradient {
+	font-family:	Arial;
+	font-weight:	bold;
+	color:			$default-font-highlight;
+}
+
+@mixin simpleBlueGradient {
+	// This yields a linear gradient spanning from top to bottom
+	@include background-image(linear-gradient(#1b3c5d, #78a1c8 50%, #1b3c5d));
+}
+
+@mixin itemDetailsGradient {
+	@include background-image(linear-gradient(#184474, #1d538d 10%, #1c528a 30%, #1d538c 40%, #1c518a 50%, #1a4b7f 60%, #194778 70%, #174372 80%, #163f6c 90%, #143b64));
+}
+
+@mixin menuJLRGradient {
+	// This yields a linear gradient spanning from top to bottom
+	@include background-image(linear-gradient(#174193, #2f549e 49%, #174193 50%, #143981));
+}
+
+
+// used for Detail buttons
+@mixin button-basics($fontcolour,$fontsize,$width,$height,$border,$radius) {
+	
+	width:			$width;
+	height:			$height;
+	font-size: 		$fontsize;
+  	font-weight: 	bold;
+  	color:			$fontcolour;
+	padding: 		0.3125rem 0.625rem;
+	border:			2px solid $border;
+	text-align:		center;
+	align:			middle;
+	cursor:			pointer;
+    margin:			0.625rem auto;
+	
+	
+	@include rounded-corners($radius);
+	@include button-box-shadow(1px, 1px, 3px, 0, #333);
+	
+	@include text-shadow(0px,-1px,0px,0,0,0);	
+}
+
+@mixin button-style-icons($fontcolour,$fontsize,$width,$border,$radius,$icon,$icon_highlight,$icon_posn) {
+	
+	@include button-basics($fontcolour,$fontsize,$width,4rem,$border,$radius);
+	
+	@include non-hightlight-icon($icon, $icon_posn);
+	
+	&:hover {
+		color:			$flat_blue_dark;
+	
+   		-moz-box-shadow: 0 0 0.625rem rgba(255,255,190,0.7);
+		-webkit-box-shadow: 0 0 0.625rem rgba(255,255,190,0.7);
+		box-shadow: 0 0 0.625rem rgba(255,255,190,0.7);
+		
+		@include hightlight-icon($icon_highlight, $icon_posn);
+		
+		@include text-shadow(0px,1px,0px,0,0,0);
+  	}
+	
+}
+
+@mixin button-style($fontcolour,$fontsize,$width,$border,$radius) {
+	
+	@include button-basics($fontcolour,$fontsize,$width,4rem,$border,$radius);
+	
+	@include non-hightlight();
+	
+	&:hover {
+		color:			$flat_blue_dark;
+	
+   		-moz-box-shadow: 0 0 0.625rem rgba(255,255,190,0.7);
+		-webkit-box-shadow: 0 0 0.625rem rgba(255,255,190,0.7);
+		box-shadow: 0 0 0.625rem rgba(255,255,190,0.7);
+		
+		@include text-shadow(0px,1px,0px,0,0,0);
+		@include hightlight();
+  	}
+	
+}
+
+@mixin skyButton($fontSize, $width, $url, $url_highlight,$icon_posn:90%) {
+	@include button-style-icons($default-font-colour,$fontSize,$width,#174da2,6px, $url, $url_highlight, $icon_posn);
+}
+
+@mixin skyButton_simple($fontSize, $width) {
+    @include button-style($default-font-colour,$fontSize,$width,#174da2,6px);
+}
+
+@mixin recordButton($fontSize, $width) {
+	
+	$top:		#ef7d85;
+	$mid1:		#e73643;
+	$mid2:		#e10a1b;
+	$bottom:	#eb1013;
+		
+	@include button-basics($default-font-colour,$fontSize,$width,4rem,#8e0306,6px);
+	
+	@include background-image(linear-gradient($top, $mid1 49%, $mid2 50%, $bottom));
+
+	&:hover {
+   		-moz-box-shadow: 0 0 0.625rem rgba(255,255,190,0.7);
+		-webkit-box-shadow: 0 0 0.625rem rgba(255,255,190,0.7);
+		box-shadow: 0 0 0.625rem rgba(255,255,190,0.7);
+		
+		@include background-image(linear-gradient($bottom, $mid2 49%, $mid1 50%, $top));
+		
+		@include text-shadow(0px,1px,0px,0,0,0);
+  	}
+	
+}
+
+@mixin remindButton($fontSize, $width) {
+	
+	$top:		#9ace96;
+	$mid1:		#40b23b;
+	$mid2:		#21a11a;
+	$bottom:	#27aa1e;
+		
+	@include button-basics($default-font-colour,$fontSize,$width,4rem,#0f520a,6px);
+	
+	@include background-image(linear-gradient($top, $mid1 49%, $mid2 50%, $bottom));
+
+	&:hover {
+   		-moz-box-shadow: 0 0 0.625rem rgba(255,255,190,0.7);
+		-webkit-box-shadow: 0 0 0.625rem rgba(255,255,190,0.7);
+		box-shadow: 0 0 0.625rem rgba(255,255,190,0.7);
+		
+		@include background-image(linear-gradient($bottom, $mid2 49%, $mid1 50%, $top));
+		
+		@include text-shadow(0px,1px,0px,0,0,0);
+  	}
+	
+}
